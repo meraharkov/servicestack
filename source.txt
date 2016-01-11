@@ -1,0 +1,21 @@
+?????? OAuth, Service Stack ? UI ?? ?????? ??????. ??? ???? ??????? ????... ????? ???????.
+??? ?? ? ??????? ?? ??????? ??? ??? ????????. ??? ??? ????? ???? ???????? OAuth + CORS ? ????.
+
+Facebook workflow
+-----------------
+User open http://ui-dev.vidbyt.es/ in browser,  clicks "Login with Facebook" button
+ui-dev opens Facebook OAuth page located at facebook.com domain using document.location (not a window popup)
+User clicks "Accept application" at facebook.com page
+facebook.com page does a HTTP 302 redirect to http://api-dev.vidbyt.es/api/v1/auth/facebook?redirectUrl=http://ui-dev.vidbyt.es/#/login
+api-dev callback GET handler reads token, load user profile info, store everythign into the db, starts new session
+api-dev does a HTTP 302 redirect to http://ui-dev.vidbyt.es/#/login?token=VB_TOKEN&userId=USER_ID
+
+Twitter workflow
+----------------
+User open http://ui-dev.vidbyt.es/ in browser,  clicks "Login with Twitter" button
+ui-dev does GET http://api-dev.vidbyt.es/api/v1/auth/twitter?redirectUrl=http://ui-dev.vidbyt.es/#/login using document.location but not a window popup (aka OAuth 1.0a proxy)
+api-dev OAuth proxy handler adds secrets and does a HTTP 302 to the Twitter OAuth 1.0a page
+User clicks "Accept applicaiton" at twitter.com page
+twitter.com page does a HTTP 302 redirect to the http://api-dev.vidbyt.es/api/v1/auth/twitter (here we have two types of GET requests - 1-st request with OAuth 1.0a proxy and 2-nd verify/callback handler)
+api-dev callback GET handler loads user profile into, store everythign into the db, starts new session
+api-dev does a HTTP 302 redirect to http://ui-dev.vidbyt.es/#/login?token=VB_TOKEN&userId=USER_ID
