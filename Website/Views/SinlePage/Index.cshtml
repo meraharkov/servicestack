@@ -1,0 +1,80 @@
+﻿@using ServiceStack
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@Scripts.Render("~/bundles/angular")
+
+@*<script src="~/Scripts/Vendor/oauth.js"></script>*@
+@*<script src="~/Scripts/Vendor/oauth.min.js"></script>*@
+@*<link href="~/Scripts/Vendor/ng-twitter.css" rel="stylesheet" />
+<script src="~/Scripts/Vendor/ng-twitter.js"></script>*@
+
+
+<script src="~/Scripts/Vendor/Angular/angular-sanitize.js"></script>
+<script src="~/Scripts/Vendor/Angular/angular-cookies.js"></script>
+<script src="https://cdn.auth0.com/js/lock-7.12.min.js"></script>
+
+<script type="text/javascript" src="//cdn.rawgit.com/auth0/angular-storage/master/dist/angular-storage.js"></script>
+<script type="text/javascript" src="//cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js"></script>
+<script src="//cdn.auth0.com/w2/auth0-angular-4.js"> </script>
+
+<script src="~/Scripts/App/application.js"></script>
+<script src="~/Scripts/App/serverApi.js"></script>
+<script src="~/Scripts/App/repositories/authenticationRepository.js"></script>
+<script src="~/Scripts/App/repositories/userRepository.js"></script>
+
+<script src="~/Scripts/App/services/authenticationService.js"></script>
+<script src="~/Scripts/App/services/userService.js"></script>
+
+@*<script src="~/Scripts/App/services/twitterService.js"></script>
+<script src="~/Scripts/App/services/twitter.js"></script>*@
+
+<script src="~/Scripts/App/controllers/homeController.js"></script>
+<script src="~/Scripts/App/controllers/loginController.js"></script>
+<script src="~/Scripts/App/controllers/registerController.js"></script>
+
+ 
+
+<script>
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '1682123258693943',
+            xfbml: true,
+            version: 'v2.5'
+        });
+    };
+
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+@*@Scripts.Render("~/bundles/angularServices")
+
+@Scripts.Render("~/bundles/angularRepos")
+
+@Scripts.Render("~/bundles/angularCtrls")*@
+
+
+
+
+<h4> Example work single page app with ServiceStack srvice </h4>
+<div class="row" ng-app="WebsiteApp" >
+    <div class="col-md-4">
+        <button type="button" onclick="location.href='@Url.Action("Twitter", "SinlePage")'"> Twitter</button>
+
+            <div ng-view></div>
+</div>
+</div>
+
+
+
+
+
+

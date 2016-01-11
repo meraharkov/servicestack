@@ -1,0 +1,15 @@
+﻿<h1>Home</h1>
+<p>{{authStatus}}</p>
+
+<div ng-repeat="profile in UsersProfile">
+    <span>{{ profile.Birthday }} </span>
+    <br/>
+    <span>{{ profile.Language }} </span>
+    <br />
+    <span>{{ profile.UserId }} </span>
+</div>
+
+<p><a href="/home.html#/login">Log In</a></p>
+<br />
+<br />
+<button ng-click="logout()"> logout </button>

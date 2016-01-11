@@ -1,0 +1,23 @@
+﻿<h1>Home</h1>
+<p>You're logged in!!</p>
+
+<div ng-repeat="profile in UsersProfile">
+    <span>{{ profile.Birthday }} </span>
+    <br/>
+    <span>{{ profile.Language }} </span>
+    <br />
+    <span>{{ profile.UserId }} </span>
+</div>
+
+<p><a href="#" ng-click="login()">Log In</a></p>
+<br />
+<br />
+
+<p><a href="#" ng-click="logout()">Logout</a></p>
+<br />
+<br />
+<button class="btn btn-default" ng-click="GetUsersProfile()"> Get User Profile </button>
+<br />
+<br />
+<button class="btn btn-default" ng-click="GetUsersProfileStatic()"> Get User Profile Static </button>
+ 

@@ -1,0 +1,69 @@
+﻿                   
+
+    <h2>Register</h2>
+    <form name="form" ng-submit="vm.register()" role="form">
+        <div class="form-group" ng-class="{ 'has-error': form.firstName.$dirty && form.firstName.$error.required }">
+            <label for="email">Email</label>
+            <input type="email"
+                   name="email"
+                   id="email"
+                   class="form-control"
+                   ng-model="userModel.Email"
+                   required />
+
+            <span ng-show="form.email.$dirty && form.email.$error.required"
+                  class="help-block">
+                Email name is required
+            </span>
+            <span class="help-block" ng-show="form.email.$error.email"> Not valid email! </span>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
+            <label for="username">Username</label>
+            <input type="text"
+                   name="username"
+                   id="username"
+                   class="form-control"
+                   ng-model="userModel.UserName"
+                   required />
+
+            <span ng-show="form.username.$dirty && form.username.$error.required"
+                   class="help-block">Username is required</span>
+        </div>
+      
+        <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+                <label for="password">Password</label>
+            <input type="password"
+                   name="password"
+                   id="password"
+                   class="form-control"
+                   ng-model="userModel.Password"
+                   required />
+
+                <span ng-show="form.password.$dirty && form.password.$error.required"
+                      class="help-block">Password is required</span>
+            </div>
+
+            <div class="form-group" ng-class="{ 'has-error': form.passwordConf.$dirty && form.passwordConf.$error.required }">
+                <label for="passwordConf">Confirm password</label>
+            
+                <input type="password"
+                       name="passwordConf"
+                       id="passwordConf"
+                       class="form-control"
+                       ng-model="passwordConf"
+                       required />
+
+                <span ng-show="form.passwordConf.$dirty && form.passwordConf.$error.required" class="help-block">Confirm password is required</span>
+                
+                <span ng-show="form.passwordConf.$modelValue !== form.password.$modelValue" class="help-block"> passwords not confirm </span>
+            </div>
+
+        <div class="form-group">
+            <button type="submit" 
+                    ng-disabled="form.$invalid || vm.dataLoading || (form.passwordConf.$modelValue !== form.password.$modelValue)" 
+                    class="btn btn-primary"
+                    ng-click="registerUser()">Register</button>
+            <a href="#/login" class="btn btn-link">Cancel</a>
+        </div>
+    </form>
